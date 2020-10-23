@@ -1,4 +1,5 @@
-# Rest и Spreat операторы. Диструктуризация. Классы.
+# Rest и Spreat операторы. Диструктуризация. Классы. Модули
+
 
 ****
 ***Rest оператор***
@@ -32,7 +33,6 @@ Spread оператор - он размазывает наше значение 
     multy(...arrMy);
     consol.log(...arrMy);
     consol.log(arrMy);
-    
     
 ****
 
@@ -171,7 +171,6 @@ Spread оператор - он размазывает наше значение 
     };
     showAgent(obj);
     
-    
 ****
 
 ***Class - классы***
@@ -203,18 +202,69 @@ Spread оператор - он размазывает наше значение 
 Если выше код переписать в классы то получиться след:
 
     class Car {
-        constructor(brand, model){
+        constructor(brand, model, reserve){
             this.brand = brand;
             this.model = model;
+            super(brand, model);
+            this.reserve = reserve;
         }
         showCar(name) {
-            console.log('My name = ' + name +
-            ', my car = ' + this.brand + ' ' + this.model);
+            console.log(`My name = ${name}, my car = ${this.brand} ${this.model});
         }
     }
+    
+    const mercedes = new Car('Mercedes-Benz', 'GLC');
 
+    class ElectroCar extends Car {
+        constructor(brand, model, reserve){
+            super(brand, model);
+            this.reserve = reserve;
+        }
+    }
     
+    const tesla = new ElectroCar('Tesla', 'X', 900);
+    tesla.showCar('Genna');
+
+****
+
+***Модули***
+
+**Пример:**
+
+    const render = data => {
+        document.getElementById('list')
+            .innerHTML += `<li>${data}</li>`
+    }
+Модули можно переиспользовать, а также хранить в различных файлах для читабельности и 
+собственно говоря и для переиспользования. Их можно экспортировать двумя способами:
     
+    //Name file render.js и его можно экспортировать
+        export const render = data => {
+            document.getElementById('list')
+                .innerHTML += `<li>${data}</li>`
+        }
+    //File script
+        import { render } form './render.js';
+        [1,2,3].forEach(render)
+    //или
+    //Name file render.js и его можно экспортировать
+        const render = data => {
+            document.getElementById('list')
+                .innerHTML += `<li>${data}</li>`
+        }
+        export default render; //экспортирует только одну функцию
+    
+    //File script 
+        import renderList form './render.js'; //поэтому здесь можно задать любое имя
+        [1,2,3].forEach(render)
+Но так как в чистом js данная схема не будет выполняться, так как она не воспринимается 
+как модульная система для чего и служит webpack. Однако есть современная фишка, когда используется
+атрибут defer можно прописать type="module". Например:
+
+    <script defer src="script.js" type="module"></script>
+
+
+****
     
 **Заметки**
 
