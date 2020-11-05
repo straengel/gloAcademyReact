@@ -56,28 +56,28 @@ const Price = styled.div`
 
 const ModalItem = ({ openItem, setOpenItem }) => {
 
-	function closeModal(e) {
-		if (e.target.id === 'overlay') {
-			setOpenItem(null);
-		}
-	}
+  function closeModal(e) {
+    if(e.target.id === 'overlay') {
+      setOpenItem(null);
+    }
+  }
 
-	if (!openItem) return null;
+  if(!openItem) return null;
 
-	return (
-		<Overlay id="overlay" onClick={closeModal}>
-			<Modal>
-				<Banner img={openItem.img}/>
-				<Description>
-					<Price>
-						<span>{openItem.name}</span>
-						<span>{openItem.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</span>
-					</Price>
-					<Button text='Добавить'/>
-				</Description>
-			</Modal>
-		</Overlay>
-	);
+  return (
+    <Overlay id="overlay" onClick={closeModal}>
+      <Modal>
+        <Banner img={openItem.img}/>
+        <Description>
+          <Price>
+            <span>{openItem.name}</span>
+            <span>{openItem.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</span>
+          </Price>
+          <Button text='Добавить'/>
+        </Description>
+      </Modal>
+    </Overlay>
+  );
 };
 
 

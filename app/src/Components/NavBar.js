@@ -45,13 +45,13 @@ const Login = styled.button`
 
 
 const NavBar = () => (
-	<NavBarStyled>
-		<Logo>
-			<ImgLogo src={logoImg} alt="logo"/>
-			<H1>MRDonald’s</H1>
-		</Logo>
-		<Login><img src={loginImg} alt="login"/>войти</Login>
-	</NavBarStyled>
+  <NavBarStyled>
+    <Logo>
+      <ImgLogo src={logoImg} alt="logo"/>
+      <H1>MRDonald’s</H1>
+    </Logo>
+      <Login><img src={loginImg} alt="login"/>войти</Login>
+  </NavBarStyled>
 );
 
 export default NavBar;
